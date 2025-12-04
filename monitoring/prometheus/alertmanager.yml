@@ -1,0 +1,10 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  receiver: 'n8n-webhook'
+
+receivers:
+  - name: 'n8n-webhook'
+    webhook_configs:
+      - url: 'http://N8N_PUBLIC_IP:5678/webhook/prom-alert'

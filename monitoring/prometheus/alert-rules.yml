@@ -1,0 +1,39 @@
+groups:
+- name: order-app-alerts
+  rules:
+
+  - alert: HighCPUUsage
+    expr: process_cpu_usage > 0.80
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "High CPU"
+      description: "CPU usage exceeded 80%"
+
+  - alert: HighMemoryUsage
+    expr: process_resident_memory_bytes > 500000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "High Memory"
+      description: "Memory usage high"
+
+  - alert: OrderAPIErrorSpike
+    expr: rate(orders_error_rate[1m]) > 5
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "Error spike detected"
+      description: "High error rate on /orders API"
+
+  - alert: TrafficSpike
+    expr: rate(orders_api_hits[1m]) > 20
+    for: 30s
+    labels:
+      severity: info
+    annotations:
+      summary: "Traffic spike"
+      description: "Incoming traffic increased > 20 req/min"
