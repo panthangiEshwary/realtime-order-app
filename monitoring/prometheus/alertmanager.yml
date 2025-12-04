@@ -7,4 +7,4 @@ route:
 receivers:
   - name: 'n8n-webhook'
     webhook_configs:
-      - url: 'http://N8N_PUBLIC_IP:5678/webhook/prom-alert'
+      - url: 'http://44.221.49.46:5678/webhook/prom-alert'
